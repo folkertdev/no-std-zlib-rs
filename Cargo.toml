@@ -1,0 +1,21 @@
+[package]
+name = "no-std-zlib-rs"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+cortex-m = { version = "0.7.6", features = ["critical-section-single-core"] }
+cortex-m-rt = "0.7.0"
+
+defmt = "0.3"
+defmt-rtt = "0.4"
+
+libz-rs-sys = { git = "https://github.com/memorysafety/zlib-rs.git", default-features = false, rev = "cc7686e7d3057b99b2c403828b32887b818226e6" }
+
+[profile.release]
+lto = true
+debug = true
+opt-level = "z"
+panic = "abort"
+codegen-units = 1
+incremental = false
